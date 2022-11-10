@@ -1,0 +1,18 @@
+version: '3'
+services:
+  db-movie-dev:
+    build: db
+    container_name: db-movie-dev
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    hostname: db-movie-dev
+    volumes:
+      - pg-data-movie-dev:/var/lib/postgresql/data
+    ports:
+      - "35432:5432"
+    restart: always
+
+volumes:
+  pg-data-movie-dev:
