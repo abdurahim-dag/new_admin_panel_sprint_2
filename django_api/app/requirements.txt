@@ -8,3 +8,4 @@ pendulum==2.1.2
 sqlalchemy==1.4.42
 pandas==1.5.1
 uwsgi==2.0.21
+django-cors-headers==3.13.0

@@ -129,5 +129,5 @@ dmypy.json
 .pyre/
 .idea/
 #.data/
-#.env.prod
-#.env.dev
+#.env.old.prod
+#.env.old.dev

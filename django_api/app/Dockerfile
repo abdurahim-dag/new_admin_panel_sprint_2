@@ -1,27 +1,32 @@
 FROM python:3.10 as base
 
+WORKDIR /app
+
+FROM base as prod
+
 ARG appuser
 RUN useradd -U $appuser
 
-WORKDIR /app
 COPY . .
-
-#ENV DJANGO_SETTINGS_MODULE 'config.settings'
 
 RUN  mkdir -p /app/media \
      && chown $appuser:$appuser /app/media \
      && mkdir -p /app/static \
      && chown $appuser:$appuser /app/static \
      && pip install --upgrade pip \
-     && pip install -r requirements.txt \
+     && pip install -r requirements.txt --no-cache-dir \
      && chown $appuser:$appuser -R /app
 
-EXPOSE 8000
-
 USER $appuser
-
-FROM base as prod
 ENTRYPOINT ["/app/run.sh"]
 
 FROM base as dev
-RUN python -m manage.py runserver
+
+COPY requirements.txt .
+
+RUN  pip install --upgrade pip \
+     && pip install -r requirements.txt --no-cache-dir
+
+EXPOSE 8000
+
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
