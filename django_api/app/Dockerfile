@@ -1,4 +1,4 @@
-FROM python:3.10
+FROM python:3.10 as base
 
 ARG appuser
 RUN useradd -U $appuser
@@ -20,4 +20,8 @@ EXPOSE 8000
 
 USER $appuser
 
+FROM base as prod
 ENTRYPOINT ["/app/run.sh"]
+
+FROM base as dev
+RUN python -m manage.py runserver

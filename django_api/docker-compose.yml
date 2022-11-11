@@ -16,6 +16,7 @@ services:
   app-movie:
     build:
       context: app
+      target: prod
       args:
         appuser: ${APP_USER}
     container_name: app-movie
