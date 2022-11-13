@@ -18,6 +18,7 @@ RUN  mkdir -p /app/media \
      && chown $appuser:$appuser -R /app
 
 USER $appuser
+
 ENTRYPOINT ["/app/run.sh"]
 
 FROM base as dev
@@ -26,7 +27,5 @@ COPY requirements.txt .
 
 RUN  pip install --upgrade pip \
      && pip install -r requirements.txt --no-cache-dir
-
-EXPOSE 8000
 
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]

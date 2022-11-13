@@ -128,6 +128,6 @@ dmypy.json
 # Pyre type checker
 .pyre/
 .idea/
-#.data/
-#.env.old.prod
-#.env.old.dev
+.data/*.csv
+.env.prod
+.env.dev

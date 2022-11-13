@@ -25,9 +25,11 @@ services:
       - app-static:/static
       - app-media:/media
     depends_on:
-      - app
+      - app-movie
     ports:
       - "80:80"
+    restart: always
+
 volumes:
   pg-data-movie:
   app-static:

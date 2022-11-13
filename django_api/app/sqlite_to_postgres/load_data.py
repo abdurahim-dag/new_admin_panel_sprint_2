@@ -22,7 +22,7 @@ if __name__ == "__main__":
         PurePath(Path(data_dir)),
     )
     if not data_path.exists():
-        raise FileExistsError("Data file sqlite NotFound")
+        raise FileExistsError(f"SQLITE DATA DIR NOT EXISTS")
 
     db_sqlite = os.environ.get('SQLITE_DB_PATH', 'db.sqlite')
     db_sqlite_path = Path(
@@ -30,7 +30,7 @@ if __name__ == "__main__":
         db_sqlite,
     )
     if not db_sqlite_path.exists():
-        raise FileExistsError
+        raise FileExistsError(f"FILE SQLITE DB NOT EXISTS")
 
     extract_filename = os.environ.get('EXTRACT_FILE_NAME', 'extract.csv')
     upload_filename = os.environ.get('UPLOAD_FILE_NAME', 'upload.csv')
