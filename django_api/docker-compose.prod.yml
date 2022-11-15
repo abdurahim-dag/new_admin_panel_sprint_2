@@ -1,11 +1,13 @@
 version: '3'
 services:
+
   db-movie:
     volumes:
       - pg-data-movie:/var/lib/postgresql/data
     expose:
       - "5432"
     restart: always
+
   app-movie:
     build:
       target: prod
@@ -16,6 +18,7 @@ services:
     expose:
       - "8000"
     restart: always
+
   nginx-movie:
     container_name: nginx-movie
     build: nginx

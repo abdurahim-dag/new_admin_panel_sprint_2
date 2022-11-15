@@ -1,5 +1,6 @@
 version: '3'
 services:
+
   db-movie:
     container_name: db-movie
     build: db
@@ -7,6 +8,7 @@ services:
       POSTGRES_DB: ${PG_DB_NAME}
       POSTGRES_USER: ${PG_USER}
       POSTGRES_PASSWORD: ${PG_PASSWORD}
+
   app-movie:
     container_name: app-movie
     build:

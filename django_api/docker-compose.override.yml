@@ -1,11 +1,13 @@
 version: '3'
 services:
+
   db-movie:
     volumes:
       - pg-db-movie-dev:/var/lib/postgresql/data
     ports:
       - "35432:5432"
     restart: unless-stopped
+
   app-movie:
     build:
       target: dev
@@ -15,9 +17,11 @@ services:
     ports:
       - "8000:8000"
     restart: unless-stopped
+
   swagger-eidtor:
     image: swaggerapi/swagger-editor
     ports:
       - "8007:8080"
+
 volumes:
   pg-db-movie-dev:
